@@ -27,6 +27,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       children: [
         // Email TextForm Fild for login page
         customTextFormField(
+          textInputAction: TextInputAction.next,
           context: context,
           controller: loginEditingController.emailController,
           contentPadding:
@@ -61,7 +62,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
             },
             icon: Icon(
               _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-              size: isTablet() ? 30 : 0,
+              size: isTablet() ? 30 : 20,
             ),
           ),
         ),

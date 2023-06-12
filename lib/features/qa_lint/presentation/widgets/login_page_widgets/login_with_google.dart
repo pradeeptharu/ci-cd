@@ -7,7 +7,7 @@ class LoginWithGoogle extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? splashColor;
 
-  const LoginWithGoogle({
+  const LoginWithGoogle({super.key, 
     required this.text,
     required this.onPressed,
     this.splashColor,

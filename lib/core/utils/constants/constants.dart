@@ -98,3 +98,20 @@ class ImagePath {
   static const qaLintLogo = 'assets/images/qa_lint_logo.png';
   static const googleLogo = 'assets/images/google.png';
 }
+
+// materiail Colors
+const MaterialColor customPrimarySwatch = MaterialColor(
+  0xff1687A7,
+  <int, Color>{
+    50: Color(0xff1687A7),
+    100: Color(0xff1687A7),
+    200: Color(0xff1687A7),
+    300: Color(0xff1687A7),
+    400: Color(0xff1687A7),
+    500: Color(0xff1687A7),
+    600: Color(0xff0F7596),
+    700: Color(0xff0B6478),
+    800: Color(0xff094F60),
+    900: Color(0xff063940),
+  },
+);

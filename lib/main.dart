@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qa_lint/core/utils/app_route/app_route.dart';
+import 'package:qa_lint/core/utils/constants/constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,11 @@ class QALint extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: Colors.green, primarySwatch: Colors.green),
+      theme: ThemeData(
+        primarySwatch: customPrimarySwatch,
+        focusColor: const Color(0xff1687A7),
+        primaryColor: customPrimarySwatch.shade500,
+      ),
       onGenerateRoute: appRouter.generateRoute,
     );
   }
