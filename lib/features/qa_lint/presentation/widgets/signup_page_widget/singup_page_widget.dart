@@ -34,7 +34,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
       child: FractionallySizedBox(
         alignment: Alignment.center,
         widthFactor: _isTablet(context)
-            ? mediaQuerryWidth(context) * 0.0001
+            ? mediaQuerryWidth(context) * 0.00075
             : mediaQuerryWidth(context) * 0.0027,
         child: Column(
           children: [
@@ -180,14 +180,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                       ),
                     ),
                     customText(
-                      text: 'I have read and agree to the',
+                      text: 'I have read and agree to the ',
                       fontSize: _isTablet(context)
                           ? tabletFontSize(context)
                           : defultFontSize(context),
                     ),
-                    TextButton(
-                      onPressed: () {},
+                    GestureDetector(
+                      onTap: () {},
                       child: customText(
+                        color: AppColor.buttonColor,
                         text: 'Privacy Policy',
                         fontSize: _isTablet(context)
                             ? tabletFontSize(context)
@@ -196,23 +197,22 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: customText(
-                        text: 'Terms and Conditions',
-                        fontSize: _isTablet(context)
-                            ? tabletFontSize(context)
-                            : defultFontSize(context),
-                      ),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    print('terms and conditgions');
+                  },
+                  child: customText(
+                    text: 'Terms and Conditions',
+                    color: AppColor.buttonColor,
+                    fontSize: _isTablet(context)
+                        ? tabletFontSize(context)
+                        : defultFontSize(context),
+                  ),
                 ),
                 SizedBox(
                   height: _isTablet(context)
                       ? mediaQuerryHeight(context) * 0.03
-                      : 0,
+                      : mediaQuerryHeight(context) * 0.02,
                 ),
                 CustomButton(
                   text: 'Sign up',

@@ -17,28 +17,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
   bool value = false;
   @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 8),
-    );
-    _animation =
-        CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack);
-    _controller.repeat(reverse: true);
-  }
-
   @override
-  void dispose() {
-    _controller.dispose();
-
-    super.dispose();
-  }
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool isTablet() {
@@ -63,19 +44,10 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 // Logo Image
                 Center(
-                  child: AnimatedBuilder(
-                    animation: _controller,
-                    builder: (context, child) {
-                      return Transform.rotate(
-                        angle: 2 * pi * _animation.value,
-                        child: child,
-                      );
-                    },
-                    child: Image.asset(
-                      ImagePath.qaLintLogo,
-                      fit: BoxFit.cover,
-                      height: mediaQuerryHeight(context) * 0.2,
-                    ),
+                  child: Image.asset(
+                    ImagePath.qaLintLogo,
+                    fit: BoxFit.cover,
+                    height: mediaQuerryHeight(context) * 0.2,
                   ),
                 ),
                 SizedBox(
@@ -178,7 +150,7 @@ class _LoginPageState extends State<LoginPage>
                 commonSizedBox(context),
                 LoginWithGoogle(
                   onPressed: () {},
-                  text: 'Log in with Google',
+                  text: 'Login with Google',
                 ),
                 const Spacer(),
                 Row(

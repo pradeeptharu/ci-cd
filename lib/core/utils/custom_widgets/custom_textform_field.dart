@@ -45,11 +45,11 @@ Widget customTextFormField(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        hoverColor: Colors.green,
+        hoverColor: customPrimarySwatch,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
           borderSide: const BorderSide(
-            color: Colors.green,
+            color: customPrimarySwatch,
           ),
         ),
       ),
