@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qa_lint/core/utils/constants/constants.dart';
 
+//adasdasda
 // custom for text and textstyle
 Widget normalText({
   String? text,
@@ -117,7 +118,6 @@ class SignupTextEditingController extends BaseTextEditingController {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 }
-
 
 class CustomButton extends StatelessWidget {
   final String text;
