@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//random check
 // normal fontsize
 double defultFontSize(BuildContext context) {
   return MediaQuery.of(context).size.height * 0.02;
