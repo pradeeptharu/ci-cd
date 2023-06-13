@@ -26,7 +26,11 @@ double iconSizeTabletLandscape(BuildContext context) {
 
 // padding for tablet 30
 double paddingTablet30(BuildContext context) {
-  return MediaQuery.of(context).size.height * 0.032;
+  return MediaQuery.of(context).size.height * 0.0;
+}
+
+double paddingTabletLandscape35(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.035;
 }
 
 // padding for mobile 10
