@@ -79,7 +79,7 @@ class _SplashPageState extends State<SplashPage>
               child: ScaleTransition(
                 scale: animation,
                 child: Image.asset(
-                  ImagePath.qaLintLogo,
+                  ImagePath.logoQaLint,
                   fit: BoxFit.cover,
                 ),
               ),
