@@ -27,6 +27,9 @@ Widget customTextFormField(
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          fontSize: defultFontSize(context),
+        ),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon != null
             ? Icon(
@@ -43,6 +46,9 @@ Widget customTextFormField(
             : const TextStyle(color: Colors.black),
         contentPadding: contentPadding,
         border: OutlineInputBorder(
+          borderSide: const BorderSide(
+            style: BorderStyle.solid,
+          ),
           borderRadius: BorderRadius.circular(24),
         ),
         hoverColor: customPrimarySwatch,

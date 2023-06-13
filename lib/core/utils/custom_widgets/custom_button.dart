@@ -18,36 +18,50 @@ class CustomButton extends StatelessWidget {
     return shortestSide >= 600;
   }
 
-  
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(24),
-        splashColor: splashColor,
-        child: Ink(
-          decoration: BoxDecoration(
+    final orientations = MediaQuery.of(context).orientation;
+
+    return OrientationBuilder(
+      builder: (context, orientation) {
+        final deviceOrientation = MediaQuery.of(context).orientation;
+        bool isLandscape = deviceOrientation == Orientation.landscape;
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onPressed,
             borderRadius: BorderRadius.circular(24),
-            color: AppColor.buttonColor,
+            splashColor: splashColor,
+            child: Ink(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                color: AppColor.buttonColor,
+              ),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 12),
+                height: isLandscape
+                    ? mediaQuerryHeight(context) * 0.073
+                    : mediaQuerryHeight(context) * 0.058,
+                width: isLandscape
+                    ? mediaQuerryWidth(context) - 90
+                    : mediaQuerryWidth(context) - 90,
+                alignment: Alignment.center,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                child: customText(
+                    text: text,
+                    fontSize: isTablet(context)
+                        ? (orientations == Orientation.landscape
+                            ? tabletLandscapeFontSize(context)
+                            : tabletFontSize(context))
+                        : defultFontSize(context),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.1),
+              ),
+            ),
           ),
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            height: MediaQuery.of(context).size.height * 0.058,
-            width: MediaQuery.of(context).size.width - 45,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-            child: customText(
-                text: text,
-                fontSize: isTablet(context)
-                    ? tabletFontSize(context)
-                    : defultFontSize(context),
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.1),
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

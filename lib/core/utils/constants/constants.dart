@@ -20,6 +20,10 @@ double iconSizeTablet(BuildContext context) {
   return MediaQuery.of(context).size.height * 0.027;
 }
 
+double iconSizeTabletLandscape(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.04;
+}
+
 // padding for tablet 30
 double paddingTablet30(BuildContext context) {
   return MediaQuery.of(context).size.height * 0.032;
@@ -28,6 +32,10 @@ double paddingTablet30(BuildContext context) {
 // padding for mobile 10
 double paddingMobile10(BuildContext context) {
   return MediaQuery.of(context).size.height * 0.012;
+}
+
+double tabletLandscapeFontSize(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.031;
 }
 
 // App Colors
@@ -95,8 +103,9 @@ bool tabletIs(BuildContext context) {
 
 // Image Path
 class ImagePath {
-  static const qaLintLogo = 'assets/images/qa_lint_logo.png';
+  // static const qaLintLogo = 'assets/images/qa_lint_logo.png';
   static const googleLogo = 'assets/images/google.png';
+  static const logoQaLint = 'assets/images/logo.png';
 }
 
 // materiail Colors
