@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qa_lint/features/qa_lint/presentation/pages/login_page/login_page.dart';
-import 'package:qa_lint/features/qa_lint/presentation/pages/signup_page/signup_page.dart';
-import 'package:qa_lint/features/qa_lint/presentation/pages/splash_page/splash_page.dart';
+import 'package:qa_lint/features/login/presentation/pages/login_page.dart';
+import 'package:qa_lint/features/signup/presentation/pages/signup_page.dart';
+import 'package:qa_lint/features/splash/presentation/pages/splash_page.dart';
 
 class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {

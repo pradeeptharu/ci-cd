@@ -19,46 +19,56 @@ Widget customTextFormField(
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 12),
     padding: const EdgeInsets.all(10),
-    child: TextFormField(
-      controller: controller,
-      obscureText: obscureText,
-      validator: validator,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      onFieldSubmitted: onFieldSubmitted,
-      decoration: InputDecoration(
-        errorStyle: TextStyle(
-          fontSize: defultFontSize(context),
-        ),
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon != null
-            ? Icon(
-                prefixIcon,
-                color: Colors.black54,
-                size: tabletIs(context)
-                    ? iconSizeTablet(context)
-                    : iconSizeMobile(context),
-              )
-            : null,
-        labelText: labelText,
-        labelStyle: labelStyle != null
-            ? labelStyle.copyWith(color: Colors.black)
-            : const TextStyle(color: Colors.black),
-        contentPadding: contentPadding,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(
-            style: BorderStyle.solid,
+    child: OrientationBuilder(
+      builder: (context, orientation) {
+        final deviceOrantation = MediaQuery.of(context).orientation;
+        bool isLandscape = deviceOrantation == Orientation.landscape;
+        return TextFormField(
+          style: TextStyle(
+              fontSize: isTablet ? mediaQuerryHeight(context) * 0.2 : null),
+          controller: controller,
+          obscureText: obscureText,
+          validator: validator,
+          keyboardType: keyboardType,
+          textInputAction: textInputAction,
+          onFieldSubmitted: onFieldSubmitted,
+          decoration: InputDecoration(
+            errorStyle: TextStyle(
+              fontSize: defultFontSize(context),
+            ),
+            suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon != null
+                ? Icon(
+                    prefixIcon,
+                    color: Colors.black54,
+                    size: tabletIs(context)
+                        ? isLandscape
+                            ? mediaQuerryHeight(context) * 0.04
+                            : iconSizeTablet(context)
+                        : iconSizeMobile(context),
+                  )
+                : null,
+            labelText: labelText,
+            labelStyle: labelStyle != null
+                ? labelStyle.copyWith(color: Colors.black)
+                : const TextStyle(color: Colors.black),
+            contentPadding: contentPadding,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                style: BorderStyle.solid,
+              ),
+              borderRadius: BorderRadius.circular(24),
+            ),
+            hoverColor: customPrimarySwatch,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(24),
+              borderSide: const BorderSide(
+                color: customPrimarySwatch,
+              ),
+            ),
           ),
-          borderRadius: BorderRadius.circular(24),
-        ),
-        hoverColor: customPrimarySwatch,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
-          borderSide: const BorderSide(
-            color: customPrimarySwatch,
-          ),
-        ),
-      ),
+        );
+      },
     ),
   );
 }
