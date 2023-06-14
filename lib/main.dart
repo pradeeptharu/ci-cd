@@ -37,6 +37,7 @@ class QALint extends StatelessWidget {
         primaryColor: customPrimarySwatch.shade500,
       ),
       onGenerateRoute: appRouter.generateRoute,
+      on
     );
   }
 }

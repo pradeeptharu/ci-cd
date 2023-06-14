@@ -84,8 +84,8 @@ Widget customTextFormField(
     {IconData? prefixIcon,
     required context,
     required String? labelText,
-     TextStyle? labelStyle,
-     EdgeInsetsGeometry? contentPadding,
+    TextStyle? labelStyle,
+    EdgeInsetsGeometry? contentPadding,
     required String? Function(String?)? validator,
     TextInputType? keyboardType,
     required TextInputAction? textInputAction,
@@ -143,7 +143,7 @@ Widget customTextFormField(
             contentPadding: tabletIs(context)
                 ? isLandscape
                     ? EdgeInsets.all(
-                        paddingTabletLandscape35(context),
+                        paddingTablet30(context),
                       )
                     : EdgeInsets.all(paddingTablet30(context))
                 : EdgeInsets.all(paddingMobile10(context)),
