@@ -20,8 +20,6 @@ class LoginWithGoogle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final orientations = MediaQuery.of(context).orientation;
-    final isLandscape = orientations == Orientation.landscape;
     final isTabletDevice = isTablet(context);
     return OrientationBuilder(
       builder: (context, orientation) {
@@ -65,12 +63,8 @@ class LoginWithGoogle extends StatelessWidget {
                     ),
                   ),
                   customText(
+                    context: context,
                     text: text,
-                    fontSize: isTablet(context)
-                        ? (orientations == Orientation.landscape
-                            ? tabletLandscapeFontSize(context)
-                            : tabletFontSize(context))
-                        : defultFontSize(context),
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),

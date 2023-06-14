@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:qa_lint/core/utils/constants/constants.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_button.dart';
@@ -27,8 +25,6 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    final orientations = MediaQuery.of(context).orientation;
-
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       body: OrientationBuilder(builder: (context, orientation) {
@@ -71,13 +67,8 @@ class _LoginPageState extends State<LoginPage>
                       children: [
                         TextButton(
                           child: customText(
+                            context: context,
                             text: 'Forgot your password?',
-                            fontSize: isTablet()
-                                ? (orientations == Orientation.landscape
-                                    ? tabletLandscapeFontSize(context)
-                                    : tabletFontSize(context))
-                                : defultFontSize(context),
-                            color: AppColor.buttonColor,
                           ),
                           onPressed: () {},
                         ),
@@ -99,12 +90,8 @@ class _LoginPageState extends State<LoginPage>
                           },
                         ),
                         customText(
+                          context: context,
                           text: 'Remember me',
-                          fontSize: isTablet()
-                              ? (orientations == Orientation.landscape
-                                  ? tabletLandscapeFontSize(context)
-                                  : tabletFontSize(context))
-                              : defultFontSize(context),
                         ),
                       ],
                     ),
@@ -143,12 +130,8 @@ class _LoginPageState extends State<LoginPage>
                           horizontal: mediaQuerryHeight(context) * 0.015,
                         ),
                         child: customText(
+                          context: context,
                           text: 'OR',
-                          fontSize: isTablet()
-                              ? (orientations == Orientation.landscape
-                                  ? tabletLandscapeFontSize(context)
-                                  : tabletFontSize(context))
-                              : defultFontSize(context),
                         ),
                       ),
                       const Expanded(
@@ -159,7 +142,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     ],
                   ),
-                  // commonSizedBox(context),
+
                   /// Login with google widget
                   LoginWithGoogle(
                     onPressed: () {},
@@ -171,12 +154,8 @@ class _LoginPageState extends State<LoginPage>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       customText(
+                        context: context,
                         text: 'Don\'t have an account?',
-                        fontSize: isTablet()
-                            ? (orientations == Orientation.landscape
-                                ? tabletLandscapeFontSize(context)
-                                : tabletFontSize(context))
-                            : defultFontSize(context),
                       ),
                       TextButton(
                         onPressed: () {
@@ -188,13 +167,8 @@ class _LoginPageState extends State<LoginPage>
                           );
                         },
                         child: customText(
+                          context: context,
                           text: 'Sign up',
-                          color: AppColor.buttonColor,
-                          fontSize: isTablet()
-                              ? (orientations == Orientation.landscape
-                                  ? tabletLandscapeFontSize(context)
-                                  : tabletFontSize(context))
-                              : defultFontSize(context),
                         ),
                       ),
                     ],

@@ -53,10 +53,10 @@ class _SplashPageState extends State<SplashPage> {
                   height: mediaQuerryHeight(context) * 0.06,
                 ),
                 customText(
+                  context: context,
                   text: 'Welcome To',
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.3,
-                  color: AppColor.buttonColor,
                   fontSize: mediaQuerryHeight(context) * 0.04,
                 ),
                 SizedBox(
@@ -88,16 +88,19 @@ class _SplashPageState extends State<SplashPage> {
                 Column(
                   children: [
                     customText(
+                      context: context,
                       text: 'YOUR PERSONALIZED PATHWAY',
                       fontWeight: FontWeight.w500,
                       fontSize: mediaQuerryHeight(context) * 0.025,
                     ),
                     customText(
+                      context: context,
                       text: 'TO THRIVING IN QUALITY',
                       fontWeight: FontWeight.w500,
                       fontSize: mediaQuerryHeight(context) * 0.025,
                     ),
                     customText(
+                      context: context,
                       text: 'ASSURANCE',
                       fontWeight: FontWeight.w500,
                       fontSize: mediaQuerryHeight(context) * 0.025,

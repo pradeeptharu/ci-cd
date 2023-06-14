@@ -4,9 +4,9 @@ import 'package:qa_lint/core/utils/constants/validator_textformfield.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_button.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_textedting_controller.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_textform_field.dart';
 import 'package:qa_lint/features/login/presentation/pages/login_page.dart';
 import 'package:qa_lint/features/profile/presentation/pages/profile_page.dart';
+import 'package:qa_lint/features/signup/presentation/widgets/sign_up_form_field.dart';
 
 class SignUpPageWidget extends StatefulWidget {
   const SignUpPageWidget({super.key});
@@ -16,7 +16,6 @@ class SignUpPageWidget extends StatefulWidget {
 }
 
 class _SignUpPageWidgetState extends State<SignUpPageWidget> {
-  bool _isPasswordVisible = true;
   bool value = false;
   SignupTextEditingController signupTextEditingController =
       SignupTextEditingController();
@@ -29,14 +28,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final orientations = MediaQuery.of(context).orientation;
     return OrientationBuilder(
       builder: (context, orientation) {
         final deviceOrantation = MediaQuery.of(context).orientation;
         bool isLandscape = deviceOrantation == Orientation.landscape;
         double widthFactor = _isTablet(context)
             ? mediaQuerryWidth(context) * 0.0011
-            : mediaQuerryWidth(context) * 0.0026;
+            : mediaQuerryWidth(context) * 0.0028;
 
         if (isLandscape) {
           widthFactor *= 0.7;
@@ -58,15 +56,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                       ? mediaQuerryHeight(context) * 0.2
                       : mediaQuerryHeight(context) * 0.133,
                 ),
-                firstNameTextFormField(context, isLandscape, orientations),
-                lastNameTextFormField(context, isLandscape, orientations),
-                phoneNumberTextFormField(context, isLandscape, orientations),
-                emailTextFormField(context, isLandscape, orientations),
-                passwordTextFormField(context, isLandscape, orientations),
-                confirmPasswordTextFormField(
-                    context, isLandscape, orientations),
-                // SignupFormFields(
-                //     isLandscape: isLandscape, orientation: orientation),
+                const SignupFormFields(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,23 +81,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                           ),
                         ),
                         customText(
-                          text: 'I have read and agree to the ',
-                          fontSize: _isTablet(context)
-                              ? (orientations == Orientation.landscape
-                                  ? tabletLandscapeFontSize(context)
-                                  : tabletFontSize(context))
-                              : defultFontSize(context),
-                        ),
+                            context: context,
+                            text: 'I have read and agree to the ',
+                            color: AppColor.titleTextColor),
                         GestureDetector(
                           onTap: () {},
                           child: customText(
-                            color: AppColor.buttonColor,
+                            context: context,
                             text: 'Privacy Policy',
-                            fontSize: _isTablet(context)
-                                ? (orientations == Orientation.landscape
-                                    ? tabletLandscapeFontSize(context)
-                                    : tabletFontSize(context))
-                                : defultFontSize(context),
                           ),
                         ),
                       ],
@@ -117,13 +98,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                         print('terms and conditgions');
                       },
                       child: customText(
+                        context: context,
                         text: 'Terms and Conditions',
-                        color: AppColor.buttonColor,
-                        fontSize: _isTablet(context)
-                            ? (orientations == Orientation.landscape
-                                ? tabletLandscapeFontSize(context)
-                                : tabletFontSize(context))
-                            : defultFontSize(context),
                       ),
                     ),
                     SizedBox(
@@ -160,12 +136,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         customText(
+                          context: context,
                           text: 'Don you have an account?',
-                          fontSize: _isTablet(context)
-                              ? (orientations == Orientation.landscape
-                                  ? tabletLandscapeFontSize(context)
-                                  : tabletFontSize(context))
-                              : defultFontSize(context),
                         ),
                         TextButton(
                           onPressed: () {
@@ -176,13 +148,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ));
                           },
                           child: customText(
+                            context: context,
                             text: 'Log in',
-                            color: AppColor.buttonColor,
-                            fontSize: _isTablet(context)
-                                ? (orientations == Orientation.landscape
-                                    ? tabletLandscapeFontSize(context)
-                                    : tabletFontSize(context))
-                                : defultFontSize(context),
                           ),
                         ),
                       ],
@@ -194,179 +161,6 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
           ),
         );
       },
-    );
-  }
-
-  Widget confirmPasswordTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.confirmPasswordValidator,
-      controller: signupTextEditingController.confirmPasswordController,
-      textInputAction: TextInputAction.done,
-      obscureText: _isPasswordVisible,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'Re-enter password',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.key_rounded,
-      suffixIcon: IconButton(
-        onPressed: () {
-          setState(() {
-            _isPasswordVisible = !_isPasswordVisible;
-          });
-        },
-        icon:
-            Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
-        iconSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? iconSizeTabletLandscape(context)
-                : iconSizeTablet(context))
-            : iconSizeMobile(context),
-      ),
-    );
-  }
-
-  Widget passwordTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.passwordValidator,
-      controller: signupTextEditingController.passwordController,
-      textInputAction: TextInputAction.next,
-      obscureText: _isPasswordVisible,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'Password',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.key_rounded,
-    );
-  }
-
-  Widget phoneNumberTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.phoneValidator,
-      controller: signupTextEditingController.phoneNumberController,
-      textInputAction: TextInputAction.next,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'Phone Number',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.phone,
-      keyboardType: TextInputType.number,
-    );
-  }
-
-  Widget emailTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.emailValidator,
-      controller: signupTextEditingController.emailController,
-      textInputAction: TextInputAction.next,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'Email',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.email,
-    );
-  }
-
-  Widget lastNameTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.lastNameValidator,
-      controller: signupTextEditingController.lastNameController,
-      textInputAction: TextInputAction.next,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'Last Name',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.person,
-    );
-  }
-
-  Widget firstNameTextFormField(
-      BuildContext context, bool isLandscape, Orientation orientations) {
-    return customTextFormField(
-      context: context,
-      validator: validator.firstNameValidator,
-      controller: signupTextEditingController.firstNameController,
-      textInputAction: TextInputAction.next,
-      contentPadding: _isTablet(context)
-          ? isLandscape
-              ? EdgeInsets.all(
-                  paddingTabletLandscape35(context),
-                )
-              : EdgeInsets.all(paddingTablet30(context))
-          : EdgeInsets.all(paddingMobile10(context)),
-      labelText: 'First Name',
-      labelStyle: labelStyle(
-        fontSize: _isTablet(context)
-            ? (orientations == Orientation.landscape
-                ? tabletLandscapeFontSize(context)
-                : tabletFontSize(context))
-            : defultFontSize(context),
-      ),
-      prefixIcon: Icons.person,
     );
   }
 }
