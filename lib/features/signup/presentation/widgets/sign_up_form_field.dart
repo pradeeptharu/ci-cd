@@ -5,13 +5,7 @@ import 'package:qa_lint/core/utils/custom_widgets/custom_textedting_controller.d
 import 'package:qa_lint/core/utils/custom_widgets/custom_textform_field.dart';
 
 class SignupFormFields extends StatefulWidget {
-  final bool isLandscape;
-  final Orientation orientation;
-
-  const SignupFormFields({
-    required this.isLandscape,
-    required this.orientation,
-  });
+  const SignupFormFields({super.key});
 
   @override
   State<SignupFormFields> createState() => _SignupFormFieldsState();
@@ -20,141 +14,61 @@ class SignupFormFields extends StatefulWidget {
 class _SignupFormFieldsState extends State<SignupFormFields> {
   bool _isPasswordVisible = true;
   Validator validator = Validator();
+
+  SignupTextEditingController signupTextEditingController =
+      SignupTextEditingController();
   bool _isTablet(BuildContext context) {
     final shortestSide = MediaQuery.of(context).size.shortestSide;
     return shortestSide >= 600;
   }
 
-  SignupTextEditingController signupTextEditingController =
-      SignupTextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    final orientations = MediaQuery.of(context).orientation;
     return Column(
       children: [
         customTextFormField(
-          context: context,
-          validator: validator.firstNameValidator,
-          controller: signupTextEditingController.firstNameController,
-          textInputAction: TextInputAction.next,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'First Name',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.person,
-        ),
-        
+            prefixIcon: Icons.person_4_rounded,
+            context: context,
+            labelText: 'First Name',
+            validator: validator.firstNameValidator,
+            textInputAction: TextInputAction.done,
+            controller: signupTextEditingController.firstNameController),
         customTextFormField(
-          context: context,
-          validator: validator.lastNameValidator,
-          controller: signupTextEditingController.lastNameController,
-          textInputAction: TextInputAction.next,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'Last Name',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.person,
-        ),
+            prefixIcon: Icons.person_4_rounded,
+            context: context,
+            labelText: 'Last Name',
+            validator: validator.lastNameValidator,
+            textInputAction: TextInputAction.done,
+            controller: signupTextEditingController.lastNameController),
         customTextFormField(
-          context: context,
-          validator: validator.emailValidator,
-          controller: signupTextEditingController.emailController,
-          textInputAction: TextInputAction.next,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'Email',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.email,
-        ),
+            prefixIcon: Icons.email,
+            context: context,
+            labelText: 'Email',
+            validator: validator.emailValidator,
+            textInputAction: TextInputAction.done,
+            controller: signupTextEditingController.emailController),
         customTextFormField(
-          context: context,
-          validator: validator.phoneValidator,
-          controller: signupTextEditingController.phoneNumberController,
-          textInputAction: TextInputAction.next,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'Phone Number',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.phone,
-          keyboardType: TextInputType.number,
-        ),
+            prefixIcon: Icons.phone,
+            context: context,
+            labelText: 'Phone Number',
+            validator: validator.phoneValidator,
+            textInputAction: TextInputAction.done,
+            controller: signupTextEditingController.phoneNumberController),
         customTextFormField(
-          context: context,
-          validator: validator.passwordValidator,
-          controller: signupTextEditingController.passwordController,
-          textInputAction: TextInputAction.next,
-          obscureText: _isPasswordVisible,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'Password',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.key_rounded,
-        ),
+            prefixIcon: Icons.key,
+            context: context,
+            labelText: 'Password',
+            validator: validator.passwordValidator,
+            textInputAction: TextInputAction.done,
+            controller: signupTextEditingController.passwordController),
         customTextFormField(
+          prefixIcon: Icons.key,
           context: context,
+          labelText: 'Confirm Password',
           validator: validator.confirmPasswordValidator,
-          controller: signupTextEditingController.confirmPasswordController,
           textInputAction: TextInputAction.done,
-          obscureText: _isPasswordVisible,
-          contentPadding: _isTablet(context)
-              ? widget.isLandscape
-                  ? EdgeInsets.all(paddingTabletLandscape35(context))
-                  : EdgeInsets.all(paddingTablet30(context))
-              : EdgeInsets.all(paddingMobile10(context)),
-          labelText: 'Re-enter password',
-          labelStyle: labelStyle(
-            fontSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? tabletLandscapeFontSize(context)
-                    : tabletFontSize(context))
-                : defultFontSize(context),
-          ),
-          prefixIcon: Icons.key_rounded,
+          controller: signupTextEditingController.confirmPasswordController,
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {
@@ -162,13 +76,13 @@ class _SignupFormFieldsState extends State<SignupFormFields> {
               });
             },
             icon: Icon(
-              _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+              _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+              size: _isTablet(context)
+                  ? (orientations == Orientation.landscape
+                      ? iconSizeTabletLandscape(context)
+                      : iconSizeTablet(context))
+                  : iconSizeMobile(context),
             ),
-            iconSize: _isTablet(context)
-                ? (widget.orientation == Orientation.landscape
-                    ? iconSizeTabletLandscape(context)
-                    : iconSizeTablet(context))
-                : iconSizeMobile(context),
           ),
         ),
       ],

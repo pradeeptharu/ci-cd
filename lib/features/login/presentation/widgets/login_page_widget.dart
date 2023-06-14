@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
 import 'package:qa_lint/core/utils/constants/validator_textformfield.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_textedting_controller.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_textform_field.dart';
@@ -23,53 +22,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final orientations = MediaQuery.of(context).orientation;
-
     return OrientationBuilder(
       builder: (context, orientation) {
         return Column(
           children: [
-            // Email TextForm Fild for login page
             customTextFormField(
-              textInputAction: TextInputAction.next,
-              context: context,
-              controller: loginEditingController.emailController,
-              contentPadding: isTablet()
-                  ? (orientations == Orientation.landscape
-                      ? const EdgeInsets.symmetric(vertical: 25)
-                      : const EdgeInsets.all(30))
-                  : const EdgeInsets.all(10),
-              labelText: 'Email',
-              labelStyle: labelStyle(
-                fontSize: isTablet()
-                    ? (orientations == Orientation.landscape
-                        ? tabletLandscapeFontSize(context)
-                        : tabletFontSize(context))
-                    : defultFontSize(context),
-              ),
-              prefixIcon: Icons.email,
-              validator: validator.emailValidator,
-            ),
-            // Password TextFormFiled for login page
+                prefixIcon: Icons.email,
+                context: context,
+                labelText: 'Email',
+                validator: validator.emailValidator,
+                textInputAction: TextInputAction.done,
+                controller: loginEditingController.emailController),
             customTextFormField(
-              context: context,
-              validator: validator.passwordValidator,
-              controller: loginEditingController.passwordController,
-              obscureText: _isPasswordVisible,
-              contentPadding: isTablet()
-                  ? (orientations == Orientation.landscape
-                      ? const EdgeInsets.symmetric(vertical: 25)
-                      : const EdgeInsets.all(30))
-                  : const EdgeInsets.symmetric(horizontal: 10),
-              labelText: 'Password',
-              labelStyle: labelStyle(
-                fontSize: isTablet()
-                    ? (orientations == Orientation.landscape
-                        ? tabletLandscapeFontSize(context)
-                        : tabletFontSize(context))
-                    : defultFontSize(context),
-              ),
               prefixIcon: Icons.key,
+              context: context,
+              labelText: 'Password',
+              validator: validator.passwordValidator,
+              textInputAction: TextInputAction.done,
+              controller: loginEditingController.emailController,
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {
@@ -77,8 +47,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   });
                 },
                 icon: Icon(
-                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                  size: isTablet() ? 30 : 20,
+                  _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
                 ),
               ),
             ),

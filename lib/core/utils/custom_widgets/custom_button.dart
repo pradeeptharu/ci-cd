@@ -48,6 +48,7 @@ class CustomButton extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                 child: customText(
+                    context: context,
                     text: text,
                     fontSize: isTablet(context)
                         ? (orientations == Orientation.landscape

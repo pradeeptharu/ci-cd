@@ -26,7 +26,7 @@ double iconSizeTabletLandscape(BuildContext context) {
 
 // padding for tablet 30
 double paddingTablet30(BuildContext context) {
-  return MediaQuery.of(context).size.height * 0.0;
+  return MediaQuery.of(context).size.height * 0.025;
 }
 
 double paddingTabletLandscape35(BuildContext context) {
@@ -66,7 +66,7 @@ TextStyle hintStyle(
 }
 
 // lable style
-TextStyle labelStyle(
+TextStyle labelStyles(
     {double? fontSize,
     BuildContext? context,
     Color? color,
