@@ -26,14 +26,16 @@ class LoginWithGoogle extends StatelessWidget {
         final deviceOrintation = MediaQuery.of(context).orientation;
         bool isLandscape = deviceOrintation == Orientation.landscape;
         return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 12),
+          margin: EdgeInsets.symmetric(
+            horizontal: mediaQuerryHeight(context) * 0.007,
+          ),
           height: isLandscape
               ? isTabletDevice
                   ? MediaQuery.of(context).size.height * 0.1
                   : MediaQuery.of(context).size.height * 0.04
               : isTabletDevice
                   ? MediaQuery.of(context).size.height * 0.08
-                  : MediaQuery.of(context).size.height * 0.085,
+                  : MediaQuery.of(context).size.height * 0.089,
           width: isLandscape
               ? isTabletDevice
                   ? MediaQuery.of(context).size.width - 80

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_iconbutton.dart';
+import 'package:qa_lint/core/utils/custom_widgets/custom_iconbutton_widget.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
-import 'package:qa_lint/features/dashboard/presentation/widgets/custom_drawer.dart';
+import 'package:qa_lint/features/dashboard/presentation/widgets/custom_drawer_widget.dart';
 
 // ignore: must_be_immutable
 class DashBoardPage extends StatelessWidget {

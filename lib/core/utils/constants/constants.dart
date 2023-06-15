@@ -47,6 +47,7 @@ class AppColor {
   static const backgroundColor = Color(0xFFD3E0EA);
   static const Color titleTextColor = Color(0xff000000);
   static const Color buttonColor = Color(0xff1687A7);
+  static const Color drawerColor = Color(0xff1687A7);
 }
 
 // hint teststyle
