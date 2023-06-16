@@ -1,10 +1,12 @@
+import 'package:qa_lint/core/utils/constants/validator.dart';
+
 class Validator {
   String? phoneValidator(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone Number is required';
     }
-    if (value.length < 8) {
-      return 'Password Atlest 8 digits';
+    if (!validatePhoneNumber(value)) {
+      return 'Invalid Phone Number';
     }
     return null;
   }
@@ -13,12 +15,18 @@ class Validator {
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
+    if (!validateEmail(value)) {
+      return 'Invalid Email';
+    }
     return null;
   }
 
   String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
+    }
+    if (!validatePassword(value)) {
+      return 'Invalid Password';
     }
     return null;
   }
@@ -37,9 +45,12 @@ class Validator {
     return null;
   }
 
-  String? confirmPasswordValidator(String? value) {
+  String? confirmPasswordValidator(String? value, String password) {
     if (value == null || value.isEmpty) {
       return 'Confirm Password is required';
+    }
+    if (value != password) {
+      return 'Password does not match';
     }
     return null;
   }

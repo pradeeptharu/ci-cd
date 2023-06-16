@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qa_lint/core/utils/constants/constants.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_button.dart';
+import 'package:qa_lint/core/utils/custom_widgets/custom_button_widget.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
 import 'package:qa_lint/features/signup/presentation/pages/signup_page.dart';
 import 'package:qa_lint/features/login/presentation/widgets/login_page_widget.dart';
 import 'package:qa_lint/features/login/presentation/widgets/login_with_google.dart';
+import 'package:qa_lint/features/signup/presentation/provider/checkbox_visibility_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,8 +15,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>
-    with SingleTickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage> {
   bool value = false;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    final checkBoxProvider = Provider.of<CheckBoxVisibilityProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       body: OrientationBuilder(builder: (context, orientation) {
@@ -70,7 +72,10 @@ class _LoginPageState extends State<LoginPage>
                             context: context,
                             text: 'Forgot your password?',
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/forgotPassword');
+                          },
                         ),
                       ],
                     ),
@@ -81,18 +86,19 @@ class _LoginPageState extends State<LoginPage>
                     ),
                     child: Row(
                       children: [
-                        Checkbox(
-                          value: value,
-                          onChanged: (value) {
-                            setState(() {
-                              this.value = value!;
-                            });
-                          },
+                        Transform.scale(
+                          scale: isTablet() ? 1.6 : 1,
+                          child: Checkbox(
+                            value: checkBoxProvider.value,
+                            onChanged: (value) {
+                              checkBoxProvider.toggelCheckBox();
+                            },
+                          ),
                         ),
                         customText(
-                          context: context,
-                          text: 'Remember me',
-                        ),
+                            context: context,
+                            text: 'Remember me',
+                            color: AppColor.titleTextColor),
                       ],
                     ),
                   ),
@@ -154,9 +160,9 @@ class _LoginPageState extends State<LoginPage>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       customText(
-                        context: context,
-                        text: 'Don\'t have an account?',
-                      ),
+                          context: context,
+                          text: 'Don\'t have an account?',
+                          color: AppColor.titleTextColor),
                       TextButton(
                         onPressed: () {
                           Navigator.push(

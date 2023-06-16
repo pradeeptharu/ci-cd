@@ -62,6 +62,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "country_picker",
+      "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/country_picker-2.0.20",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "crypto",
       "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.3",
       "packageUri": "lib/",
@@ -116,6 +122,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "intl_phone_field",
+      "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/intl_phone_field-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -152,6 +164,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -168,6 +186,12 @@
       "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/pointycastle-3.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///C:/Users/prade/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -242,7 +266,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-16T03:35:31.767624Z",
+  "generated": "2023-06-16T03:36:23.969824Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

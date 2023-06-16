@@ -23,7 +23,9 @@ class _SplashPageState extends State<SplashPage> {
     Timer(const Duration(seconds: 5), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
       );
     });
   }
@@ -57,7 +59,11 @@ class _SplashPageState extends State<SplashPage> {
                   text: 'Welcome To',
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.3,
-                  fontSize: mediaQuerryHeight(context) * 0.04,
+                  fontSize: isTablet()
+                      ? isLandscape
+                          ? mediaQuerryHeight(context) * 0.05
+                          : mediaQuerryHeight(context) * 0.05
+                      : mediaQuerryHeight(context) * 0.05,
                 ),
                 SizedBox(
                   height: isTablet()
@@ -91,19 +97,31 @@ class _SplashPageState extends State<SplashPage> {
                       context: context,
                       text: 'YOUR PERSONALIZED PATHWAY',
                       fontWeight: FontWeight.w500,
-                      fontSize: mediaQuerryHeight(context) * 0.025,
+                      fontSize: isTablet()
+                          ? isLandscape
+                              ? mediaQuerryHeight(context) * 0.035
+                              : mediaQuerryHeight(context) * 0.028
+                          : mediaQuerryHeight(context) * 0.025,
                     ),
                     customText(
                       context: context,
                       text: 'TO THRIVING IN QUALITY',
                       fontWeight: FontWeight.w500,
-                      fontSize: mediaQuerryHeight(context) * 0.025,
+                      fontSize: isTablet()
+                          ? isLandscape
+                              ? mediaQuerryHeight(context) * 0.035
+                              : mediaQuerryHeight(context) * 0.028
+                          : mediaQuerryHeight(context) * 0.025,
                     ),
                     customText(
                       context: context,
                       text: 'ASSURANCE',
                       fontWeight: FontWeight.w500,
-                      fontSize: mediaQuerryHeight(context) * 0.025,
+                      fontSize: isTablet()
+                          ? isLandscape
+                              ? mediaQuerryHeight(context) * 0.035
+                              : mediaQuerryHeight(context) * 0.028
+                          : mediaQuerryHeight(context) * 0.025,
                     ),
                   ],
                 ),
