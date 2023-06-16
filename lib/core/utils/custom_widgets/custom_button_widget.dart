@@ -38,23 +38,22 @@ class CustomButton extends StatelessWidget {
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 12),
-                height: isLandscape
-                    ? mediaQuerryHeight(context) * 0.073
+                height: isTablet(context)
+                    ? isLandscape
+                        ? mediaQuerryHeight(context) * 0.073
+                        : mediaQuerryHeight(context) * 0.06
                     : mediaQuerryHeight(context) * 0.058,
-                width: isLandscape
-                    ? mediaQuerryWidth(context) - 90
-                    : mediaQuerryWidth(context) - 90,
+                width: isTablet(context)
+                    ? isLandscape
+                        ? mediaQuerryWidth(context) - 90
+                        : mediaQuerryWidth(context) - 90
+                    : mediaQuerryWidth(context) - 80,
                 alignment: Alignment.center,
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                 child: customText(
                     context: context,
                     text: text,
-                    fontSize: isTablet(context)
-                        ? (orientations == Orientation.landscape
-                            ? tabletLandscapeFontSize(context)
-                            : tabletFontSize(context))
-                        : defultFontSize(context),
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.1),
