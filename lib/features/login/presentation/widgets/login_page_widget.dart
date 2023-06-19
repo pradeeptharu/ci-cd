@@ -39,7 +39,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               labelText: 'Password',
               validator: validator.passwordValidator,
               textInputAction: TextInputAction.done,
-              controller: loginEditingController.emailController,
+              controller: loginEditingController.passwordController,
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {
