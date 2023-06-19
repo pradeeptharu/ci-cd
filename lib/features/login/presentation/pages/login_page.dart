@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:qa_lint/core/utils/constants/constants.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_button_widget.dart';
 import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
+import 'package:qa_lint/features/quiz_landing_page/presentation/pages/quiz_landing_page.dart';
 import 'package:qa_lint/features/signup/presentation/pages/signup_page.dart';
 import 'package:qa_lint/features/login/presentation/widgets/login_page_widget.dart';
 import 'package:qa_lint/features/login/presentation/widgets/login_with_google.dart';
@@ -108,12 +109,12 @@ class _LoginPageState extends State<LoginPage> {
                       text: 'Login',
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => ProfileScreen(),
-                          //   ),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuizLandingPage(),
+                            ),
+                          );
                         }
                       },
                     ),
