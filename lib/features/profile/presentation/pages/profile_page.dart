@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
+import 'package:qa_lint/features/signup/presentation/provider/signup_user_data_provider.dart';
 
 class ProfilePage extends StatelessWidget {
-  final String name;
-  final String email;
-  final String phoneNumber;
+  const ProfilePage({super.key});
 
-  const ProfilePage(
-      {super.key,
-      required this.name,
-      required this.email,
-      required this.phoneNumber});
   @override
   Widget build(BuildContext context) {
+    final signUpUserData = Provider.of<SignUpUserDataProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text('Profile'),
       ),
-      body:  Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(name),
-            Text(email),
-            Text(phoneNumber),
+            customText(
+                context: context, text: 'Email: ${signUpUserData.email}'),
+            customText(
+                context: context,
+                text: 'First Name: ${signUpUserData.firstName}'),
+            customText(
+                context: context,
+                text: 'Last Name: ${signUpUserData.lastName}'),
           ],
         ),
       ),

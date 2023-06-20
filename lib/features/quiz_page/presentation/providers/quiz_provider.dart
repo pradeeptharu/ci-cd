@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:qa_lint/features/quiz_page/data/models/quiz_model.dart';
-// import 'dart:async';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
 class QuizProvider extends ChangeNotifier {
   List<Question> quizQuestions = getQuestions();

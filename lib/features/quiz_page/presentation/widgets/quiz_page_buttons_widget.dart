@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
-import 'package:qa_lint/features/quiz_page/presentation/providers/quiz_provider.dart';
-import 'package:provider/provider.dart';
-
+import 'package:qa_lint/core/utils/constants/exports.dart';
 class QuizPageButtonsWidget extends StatefulWidget {
   const QuizPageButtonsWidget({super.key});
 

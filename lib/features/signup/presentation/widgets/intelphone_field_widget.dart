@@ -1,11 +1,7 @@
-import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:intl_phone_field/phone_number.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
-Widget customIntlPhoneTextFormField(
+Widget customPhoneFiled(
     {IconData? prefixIcon,
     required context,
     required String? labelText,
@@ -29,6 +25,14 @@ Widget customIntlPhoneTextFormField(
         final deviceOrantation = MediaQuery.of(context).orientation;
         bool isLandscape = deviceOrantation == Orientation.landscape;
         return IntlPhoneField(
+          dropdownTextStyle: TextStyle(
+              fontSize: tabletIs(context)
+                  ? isLandscape
+                      ? mediaQuerryHeight(context) * 0.035
+                      : mediaQuerryHeight(context) * 0.022
+                  : mediaQuerryHeight(context) * 0.018),
+          showCountryFlag: false,
+          showDropdownIcon: false,
           onChanged: (phone) {
             print(phone.completeNumber);
           },

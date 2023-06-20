@@ -1,23 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
-import 'package:qa_lint/core/utils/constants/validator_textformfield.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_textedting_controller.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_textform_field_widget.dart';
-import 'package:qa_lint/features/signup/presentation/provider/password_visibility_provider.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
 class LoginPageWidget extends StatefulWidget {
-  const LoginPageWidget({super.key});
+  const LoginPageWidget({
+    Key? key,
+    required this.loginEditingController,
+  }) : super(key: key);
+  final LoginTextEditingController loginEditingController;
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  LoginTextEditingController loginEditingController =
-      LoginTextEditingController();
+  // LoginTextEditingController loginEditingController =
   Validator validator = Validator();
-  bool isTablet() {
+
+  bool isTablet(BuildContext context) {
     final shortestSide = MediaQuery.of(context).size.shortestSide;
     return shortestSide >= 600;
   }
@@ -38,15 +36,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 labelText: 'Email',
                 validator: validator.emailValidator,
                 textInputAction: TextInputAction.next,
-                controller: loginEditingController.emailController),
+                controller: widget.loginEditingController.emailController),
             customTextFormField(
               obscureText: !passwordVisibilityProvider.isPasswordVisible,
               prefixIcon: Icons.key,
               context: context,
               labelText: 'Password',
-              validator: validator.passwordValidator,
+              validator: validator.loginPasswordValidator,
               textInputAction: TextInputAction.done,
-              controller: loginEditingController.passwordController,
+              controller: widget.loginEditingController.passwordController,
               suffixIcon: IconButton(
                 onPressed: () {
                   passwordVisibilityProvider.togglePasswordVisibility();
@@ -55,7 +53,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   passwordVisibilityProvider.isPasswordVisible
                       ? Icons.visibility
                       : Icons.visibility_off,
-                  size: isTablet()
+                  size: isTablet(context)
                       ? (orientations == Orientation.landscape
                           ? iconSizeTabletLandscape(context)
                           : iconSizeTablet(context))

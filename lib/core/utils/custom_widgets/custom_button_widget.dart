@@ -19,8 +19,6 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    final orientations = MediaQuery.of(context).orientation;
-
     return OrientationBuilder(
       builder: (context, orientation) {
         final deviceOrientation = MediaQuery.of(context).orientation;

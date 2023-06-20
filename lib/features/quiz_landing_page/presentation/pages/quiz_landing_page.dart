@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
-
-import 'package:qa_lint/core/utils/custom_widgets/custom_button_widget.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
-import 'package:qa_lint/features/quiz_page/presentation/pages/quiz_page.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
 class QuizLandingPage extends StatefulWidget {
   const QuizLandingPage({Key? key}) : super(key: key);
@@ -63,7 +58,7 @@ class _QuizLandingPageState extends State<QuizLandingPage>
                 ),
               ),
               SizedBox(
-                height: mediaQuerryHeight(context) * 0.42,
+                height: mediaQuerryHeight(context) * 0.3,
               ),
               SizedBox(
                 child: CustomButton(

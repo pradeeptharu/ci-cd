@@ -1,9 +1,16 @@
-<<<<<<< HEAD
-#Thu Jun 15 15:28:48 NPT 2023
-base.0=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-=======
-#Mon Jun 19 10:39:06 NPT 2023
-base.0=C\:\\Users\\OMEN\\OneDrive\\Desktop\\QALint\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
->>>>>>> quiz_page_ui
+#Tue Jun 20 16:27:54 NPT 2023
+base.0=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=H\:\\Flutter Projects\\QA Lint\\qa_lint\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
 path.0=classes.dex
+path.1=0/classes.dex
+path.2=0/classes.dex
+path.3=1/classes.dex
+path.4=2/classes.dex
 renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
+renamed.4=classes5.dex

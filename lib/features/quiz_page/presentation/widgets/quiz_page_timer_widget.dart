@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:provider/provider.dart';
-import 'package:qa_lint/features/quiz_page/presentation/providers/quiz_provider.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
 class QuizPageTimerWidget extends StatefulWidget {
   const QuizPageTimerWidget({super.key});
@@ -12,7 +8,7 @@ class QuizPageTimerWidget extends StatefulWidget {
 }
 
 class _QuizPageTimerWidgetState extends State<QuizPageTimerWidget> {
-  int _totalSeconds = 10;
+  int _totalSeconds = 1800;
   late Timer _timer;
   @override
   void initState() {
@@ -50,7 +46,7 @@ class _QuizPageTimerWidgetState extends State<QuizPageTimerWidget> {
   Widget build(BuildContext context) {
     return Consumer<QuizProvider>(
         builder: (context, value, child) => Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 0.0, 8, 0),
+              padding: const EdgeInsets.only(right: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,

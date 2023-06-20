@@ -13,7 +13,7 @@ class AppRouter {
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/signupPage':
-        return MaterialPageRoute(builder: (_) => const SignUpPage());
+        return MaterialPageRoute(builder: (_) =>  SignUpPage());
       case '/forgotPassword':
         return MaterialPageRoute(builder: (_) =>  ForgotPasswordPage());
       default:

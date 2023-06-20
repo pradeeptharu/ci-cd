@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
 
 class LoginWithGoogle extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final Color? splashColor;
+  final String? image;
 
   const LoginWithGoogle({
     super.key,
     required this.text,
     required this.onPressed,
+    required this.image,
     this.splashColor,
   });
   bool isTablet(BuildContext context) {
@@ -31,18 +31,18 @@ class LoginWithGoogle extends StatelessWidget {
           ),
           height: isLandscape
               ? isTabletDevice
-                  ? MediaQuery.of(context).size.height * 0.1
-                  : MediaQuery.of(context).size.height * 0.04
+                  ? mediaQuerryHeight(context) * 0.1
+                  : mediaQuerryHeight(context) * 0.04
               : isTabletDevice
-                  ? MediaQuery.of(context).size.height * 0.08
-                  : MediaQuery.of(context).size.height * 0.089,
+                  ? mediaQuerryHeight(context) * 0.08
+                  : mediaQuerryHeight(context) * 0.086,
           width: isLandscape
               ? isTabletDevice
-                  ? MediaQuery.of(context).size.width - 80
-                  : MediaQuery.of(context).size.width - 45
+                  ? mediaQuerryWidth(context) - 80
+                  : mediaQuerryWidth(context) - 45
               : isTabletDevice
-                  ? MediaQuery.of(context).size.width - 45
-                  : MediaQuery.of(context).size.width - 40,
+                  ? mediaQuerryWidth(context) - 45
+                  : mediaQuerryWidth(context) - 40,
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           child: InkWell(
@@ -60,7 +60,7 @@ class LoginWithGoogle extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(right: 8),
                     child: Image.asset(
-                      ImagePath.googleLogo,
+                      image!,
                       height: mediaQuerryHeight(context) * 0.6,
                     ),
                   ),

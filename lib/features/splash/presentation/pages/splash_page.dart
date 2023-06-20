@@ -1,9 +1,5 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:qa_lint/core/utils/constants/constants.dart';
-import 'package:qa_lint/core/utils/custom_widgets/custom_text_widget.dart';
-import 'package:qa_lint/features/login/presentation/pages/login_page.dart';
+import 'package:qa_lint/core/utils/constants/exports.dart';
+import 'package:qa_lint/features/splash/presentation/widgets/splash_custom_widget.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -21,18 +17,8 @@ class _SplashPageState extends State<SplashPage> {
 
   void _timer(BuildContext context) {
     Timer(const Duration(seconds: 5), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginPage(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, '/loginPage');
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   bool isTablet() {
@@ -40,6 +26,7 @@ class _SplashPageState extends State<SplashPage> {
     return shortestSide >= 600;
   }
 
+  SplashWidget splashWidget = SplashWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,79 +36,61 @@ class _SplashPageState extends State<SplashPage> {
           builder: (context, orientation) {
             final deviceOrientation = MediaQuery.of(context).orientation;
             bool isLandscape = deviceOrientation == Orientation.landscape;
+
+            final double headerFontSize = isTablet()
+                ? mediaQuerryHeight(context) * 0.05
+                : mediaQuerryHeight(context) * 0.05;
+
+            final double contentFontSize = isTablet()
+                ? isLandscape
+                    ? mediaQuerryHeight(context) * 0.035
+                    : mediaQuerryHeight(context) * 0.028
+                : mediaQuerryHeight(context) * 0.03;
+
+            final double logoHeight = isTablet()
+                ? isLandscape
+                    ? mediaQuerryHeight(context) * 0.4
+                    : mediaQuerryHeight(context) * 0.5
+                : mediaQuerryHeight(context) * 0.37;
+
+            final double logoWidth = isTablet()
+                ? isLandscape
+                    ? mediaQuerryWidth(context) * 0.4
+                    : mediaQuerryWidth(context) * 0.5
+                : mediaQuerryWidth(context);
+
             return Column(
               children: [
                 SizedBox(
                   height: mediaQuerryHeight(context) * 0.06,
                 ),
-                customText(
-                  context: context,
-                  text: 'Welcome To',
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.3,
-                  fontSize: isTablet()
-                      ? isLandscape
-                          ? mediaQuerryHeight(context) * 0.05
-                          : mediaQuerryHeight(context) * 0.05
-                      : mediaQuerryHeight(context) * 0.05,
-                ),
+                splashWidget.buildContentText(
+                    context, 'Welcome To', headerFontSize),
                 SizedBox(
                   height: isTablet()
                       ? mediaQuerryHeight(context) * 0.05
                       : mediaQuerryHeight(context) * 0.08,
                 ),
-                SizedBox(
-                  height: isTablet()
-                      ? isLandscape
-                          ? mediaQuerryHeight(context) * 0.4
-                          : mediaQuerryHeight(context) * 0.5
-                      : mediaQuerryHeight(context) * 0.37,
-                  width: isTablet()
-                      ? isLandscape
-                          ? mediaQuerryWidth(context) * 0.4
-                          : mediaQuerryWidth(context) * 0.5
-                      : mediaQuerryWidth(context),
-                  child: Center(
-                    child: Image.asset(
-                      ImagePath.logoQaLint,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                splashWidget.buildLogoImage(context, logoHeight, logoWidth),
                 SizedBox(
                   height: mediaQuerryHeight(context) * 0.025,
                 ),
                 Column(
                   children: [
-                    customText(
-                      context: context,
-                      text: 'YOUR PERSONALIZED PATHWAY',
-                      fontWeight: FontWeight.w500,
-                      fontSize: isTablet()
-                          ? isLandscape
-                              ? mediaQuerryHeight(context) * 0.035
-                              : mediaQuerryHeight(context) * 0.028
-                          : mediaQuerryHeight(context) * 0.025,
+                    splashWidget.buildContentText(
+                      context,
+                      'YOUR PERSONALIZED PATHWAY',
+                      contentFontSize,
                     ),
-                    customText(
-                      context: context,
-                      text: 'TO THRIVING IN QUALITY',
-                      fontWeight: FontWeight.w500,
-                      fontSize: isTablet()
-                          ? isLandscape
-                              ? mediaQuerryHeight(context) * 0.035
-                              : mediaQuerryHeight(context) * 0.028
-                          : mediaQuerryHeight(context) * 0.025,
+                    splashWidget.buildContentText(
+                      context,
+                      'TO THRIVING IN QUALITY',
+                      contentFontSize,
                     ),
-                    customText(
-                      context: context,
-                      text: 'ASSURANCE',
-                      fontWeight: FontWeight.w500,
-                      fontSize: isTablet()
-                          ? isLandscape
-                              ? mediaQuerryHeight(context) * 0.035
-                              : mediaQuerryHeight(context) * 0.028
-                          : mediaQuerryHeight(context) * 0.025,
+                    splashWidget.buildContentText(
+                      context,
+                      'ASSURANCE',
+                      contentFontSize,
                     ),
                   ],
                 ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // normal fontsize
 double defultFontSize(BuildContext context) {
-  return MediaQuery.of(context).size.height * 0.02;
+  return MediaQuery.of(context).size.height * 0.022;
 }
 
 // tablet fontsize
@@ -25,8 +25,20 @@ double iconSizeTabletLandscape(BuildContext context) {
 }
 
 // padding for tablet 30
+double paddingTablet20(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.02;
+}
+
 double paddingTablet30(BuildContext context) {
   return MediaQuery.of(context).size.height * 0.025;
+}
+
+double paddingTablet40(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.04;
+}
+
+double paddingTablet50(BuildContext context) {
+  return MediaQuery.of(context).size.height * 0.05;
 }
 
 double paddingTabletLandscape35(BuildContext context) {
@@ -70,7 +82,7 @@ TextStyle hintStyle(
 TextStyle labelStyles(
     {double? fontSize,
     BuildContext? context,
-    Color? color,
+    Color? color, 
     FontWeight? fontWeight,
     double? letterSpacing,
     TextOverflow? overflow}) {
@@ -111,6 +123,8 @@ class ImagePath {
   // static const qaLintLogo = 'assets/images/qa_lint_logo.png';
   static const googleLogo = 'assets/images/google.png';
   static const logoQaLint = 'assets/images/logo.png';
+  static const noInternet = 'assets/images/no_internet.png';
+  static const retry = 'assets/images/retry.png';
 }
 
 // materiail Colors
